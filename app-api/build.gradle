@@ -1,0 +1,13 @@
+//project('app:app-api') { // 컴파일 시 multi-module-database 로딩
+//    dependencies {
+////        compileOnly project(':module-core')
+////        compileOnly project(':module-database')
+//    }
+//}
+
+dependencies {
+    implementation project(':domain:domain-h2')
+//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

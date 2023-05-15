@@ -1,2 +1,11 @@
 rootProject.name = 'multi-module'
-
+include 'app-api'
+include 'core'
+include 'client'
+include 'app-batch'
+//include 'domain-h2'
+//include 'domain-ms'
+include 'domain:domain-service'
+//findProject(':domain:domain-service')?.name = 'domain-service'
+include 'domain:domain-h2'
+//findProject(':domain:domain-h2')?.name = 'domain-h2'
