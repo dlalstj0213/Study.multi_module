@@ -1,2 +1,10 @@
 rootProject.name = 'multi-module'
-
+include ':application:pinata-service'
+include ':application:pinata-port-in'
+include ':application:pinata-port-out'
+include ':adapter:pinata-web'
+include ':adapter:pinata-persistence'
+include ':boot:pinata-api'
+include ':boot:pinata-batch'
+include ':boot:pinata-api'
+include ':domain:pinata-domain'

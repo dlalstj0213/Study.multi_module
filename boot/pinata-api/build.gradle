@@ -1,0 +1,9 @@
+plugins {
+    id 'multi_module.java-conventions'
+}
+
+dependencies {
+    implementation project(':adapter:pinata-web')
+    implementation 'org.springframework.boot:spring-boot-starter'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
