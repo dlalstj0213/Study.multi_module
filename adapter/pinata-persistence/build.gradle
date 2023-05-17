@@ -3,7 +3,11 @@ plugins {
 }
 
 dependencies {
-    implementation(project(':application:pinata-port-out'))
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    implementation('com.h2database:h2')
+    implementation project(':application:pinata-domain')
+    implementation project(':application:pinata-port-out')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
 }
+
+bootJar { enabled = false }
+jar { enabled = true }

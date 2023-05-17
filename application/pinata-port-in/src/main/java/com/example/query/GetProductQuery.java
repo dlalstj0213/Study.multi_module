@@ -1,6 +1,6 @@
-package com.example;
+package com.example.query;
 
-import com.example.model.Product;
+import com.example.entity.Product;
 
 import java.util.List;
 

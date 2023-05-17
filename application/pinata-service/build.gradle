@@ -2,9 +2,12 @@ plugins {
     id 'multi_module.java-conventions'
 }
 
+bootJar { enabled = false }
+jar { enabled = true }
+
 dependencies {
     implementation project(":application:pinata-port-in")
     implementation project(":application:pinata-port-out")
-    implementation project(":domain:pinata-domain")
+    implementation project(":application:pinata-domain")
     implementation 'org.springframework.boot:spring-boot'
 }

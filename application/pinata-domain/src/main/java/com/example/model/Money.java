@@ -1,7 +1,6 @@
-package com.example;
+package com.example.model;
 
 import lombok.NonNull;
-import lombok.Value;
 
 import java.math.BigInteger;
 

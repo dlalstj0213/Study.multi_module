@@ -3,26 +3,23 @@ package com.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigInteger;
-import java.time.LocalDateTime;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "product")
+@Table(name = "subscription")
 @Entity
-public class Product {
+public class Subscription {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String email;
+
+    private String password;
+
     private String name;
 
-    private BigInteger price;
-
-    private LocalDateTime createdAt;
-
-    private LocalDateTime updatedAt;
 }

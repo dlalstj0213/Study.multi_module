@@ -1,7 +1,7 @@
 package com.example.online;
 
-import com.example.GetProductQuery;
-import com.example.model.Product;
+import com.example.entity.Product;
+import com.example.query.GetProductQuery;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +17,11 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-    private final GetProductQuery productQuery;
+    private final GetProductQuery getProductService;
 
     @GetMapping("")
     private ResponseEntity<List<Product>> getProducts() {
         return ResponseEntity.ok()
-                             .body(productQuery.getProducts());
+                             .body(getProductService.getProducts());
     }
 }

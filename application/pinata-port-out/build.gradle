@@ -2,6 +2,9 @@ plugins {
     id 'multi_module.java-conventions'
 }
 
+bootJar { enabled = false }
+jar { enabled = true }
+
 dependencies {
-    implementation project(":domain:pinata-domain")
+    implementation project(":application:pinata-domain")
 }
