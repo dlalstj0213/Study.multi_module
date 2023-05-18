@@ -1,15 +1,15 @@
 package com.example.service;
 
-import com.example.entity.Product;
-import com.example.query.GetProductQuery;
-import com.example.ReadProductPort;
+import com.example.h2.entity.Product;
+import com.example.port.in.query.GetProductQuery;
+import com.example.port.out.ReadProductPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 @RequiredArgsConstructor
+@Component
 public class GetProductService implements GetProductQuery {
 
     private final ReadProductPort readProductPort;

@@ -21,10 +21,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/adapter" />
-            <option value="$PROJECT_DIR$/adapter/pinata-persistence" />
+            <option value="$PROJECT_DIR$/adapter/pinata-h2" />
+            <option value="$PROJECT_DIR$/adapter/pinata-postgresql" />
             <option value="$PROJECT_DIR$/adapter/pinata-web" />
             <option value="$PROJECT_DIR$/application" />
-            <option value="$PROJECT_DIR$/application/pinata-domain" />
+            <option value="$PROJECT_DIR$/application/pinata-domain-h2" />
+            <option value="$PROJECT_DIR$/application/pinata-domain-postgresql" />
             <option value="$PROJECT_DIR$/application/pinata-port-in" />
             <option value="$PROJECT_DIR$/application/pinata-port-out" />
             <option value="$PROJECT_DIR$/application/pinata-service" />
@@ -32,6 +34,8 @@
             <option value="$PROJECT_DIR$/boot/pinata-api" />
             <option value="$PROJECT_DIR$/boot/pinata-batch" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/config" />
+            <option value="$PROJECT_DIR$/config/pinata-config" />
           </set>
         </option>
       </GradleProjectSettings>

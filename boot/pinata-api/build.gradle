@@ -6,8 +6,13 @@ bootJar { enabled = true }
 jar { enabled = false }
 
 dependencies {
+    implementation project(':config:pinata-config')
+
     implementation project(':adapter:pinata-web')
-    implementation project(':adapter:pinata-persistence')
+    implementation project(':adapter:pinata-h2')
+    implementation project(':adapter:pinata-postgresql')
+
     implementation project(':application:pinata-service')
+
     implementation 'org.springframework.boot:spring-boot-starter'
 }

@@ -7,7 +7,9 @@ jar { enabled = true }
 
 dependencies {
     implementation project(':application:pinata-port-in')
-    implementation project(':application:pinata-domain')
+
+    implementation project(':application:pinata-domain-h2')
+    implementation project(':application:pinata-domain-postgresql')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation project(path: ':application:pinata-domain')
 }
