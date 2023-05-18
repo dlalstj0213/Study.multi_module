@@ -1,0 +1,13 @@
+plugins {
+    id 'multi_module.java-conventions'
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    implementation project(':application:pinata-domain-postgresql')
+    implementation project(':application:pinata-port-out')
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.postgresql:postgresql'
+}
