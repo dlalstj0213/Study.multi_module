@@ -1,0 +1,6 @@
+plugins {
+    id 'multi_module.java-conventions'
+}
+
+dependencies {
+}

@@ -18,3 +18,27 @@ Content-Type: application/json
 }
 
 ###
+
+GET http://localhost:8080/pinata/employee/100
+Accept: application/json
+
+###
+
+GET http://localhost:8082/pinata2/pinata/employee
+Accept: application/json
+
+###
+
+POST http://localhost:8080/pinata/employee
+Content-Type: application/json
+
+{
+  "email": "fga353323412@irkudos.co.kr",
+  "name": "이민민23",
+  "sex": "남"
+}
+
+###
+
+GET http://localhost:8080/pinata2/pinata/employee
+Accept: application/json

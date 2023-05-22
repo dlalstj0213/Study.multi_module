@@ -1,0 +1,11 @@
+plugins {
+    id 'multi_module.java-conventions'
+}
+
+dependencies {
+    implementation project(':m-pinata-application-port-in')
+    implementation project(':m-pinata-application-port-out')
+    implementation project(':m-pinata-domain')
+
+    implementation 'org.springframework.boot:spring-boot'
+}
