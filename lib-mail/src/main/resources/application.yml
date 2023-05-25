@@ -1,0 +1,6 @@
+mail:
+  sender: irpage@irkudos.co.kr
+  host: 211.239.118.41
+  port: 6700
+  username: admin
+  password: 1234

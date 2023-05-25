@@ -39,6 +39,7 @@
             <option value="$PROJECT_DIR$/cloud-pinata" />
             <option value="$PROJECT_DIR$/config" />
             <option value="$PROJECT_DIR$/config/pinata-config" />
+            <option value="$PROJECT_DIR$/lib-mail" />
             <option value="$PROJECT_DIR$/m-pinata-adapter-persistence" />
             <option value="$PROJECT_DIR$/m-pinata-adapter-web" />
             <option value="$PROJECT_DIR$/m-pinata-application-port-in" />

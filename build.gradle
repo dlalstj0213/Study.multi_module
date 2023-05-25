@@ -1,0 +1,20 @@
+tasks.register("module") {
+
+    if (!project.hasProperty('moduleName')) {
+        throw new Exception("Error :: There is no [moduleName] in project property")
+    }
+    moduleName = "${project.hasProperty('moduleName') ? project.property('moduleName') : ''}"
+
+    doLast {
+        println "task module success"
+    }
+}
+
+
+tasks.register("module-help") {
+    println("""
+sciprt module option list :
+-Pname    = module name (required)
+-Ppackage = package name (optional)
+          """)
+}

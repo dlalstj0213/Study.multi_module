@@ -20,4 +20,4 @@ include 'm-pinata-domain'
 include 'boot-pinata-api'
 include 'boot-pinata2-api'
 include 'cloud-pinata'
-
+include ':lib-mail'

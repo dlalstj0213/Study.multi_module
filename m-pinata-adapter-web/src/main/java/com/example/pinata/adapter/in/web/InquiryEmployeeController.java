@@ -4,11 +4,13 @@ import com.example.pinata.application.port.in.ListEmployeeQuery;
 import com.example.pinata.application.port.in.LoadEmployeeQuery;
 import com.example.pinata.domain.Employee;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/pinata/employee")
 @RestController
