@@ -1,2 +1,17 @@
 rootProject.name = 'multi-module'
 
+include ':msa:domainA:adapter-in-web'
+include ':msa:domainA:adapter-out-persistence'
+include ':msa:domainA:app-domain'
+include ':msa:domainA:app-port-in'
+include ':msa:domainA:app-port-out'
+include ':msa:domainA:app-service'
+include ':msa:domainA:boot'
+
+include ':msa:domainB:adapter-in-web'
+include ':msa:domainB:adapter-out-persistence'
+include ':msa:domainB:app-domain'
+include ':msa:domainB:app-port-in'
+include ':msa:domainB:app-port-out'
+include ':msa:domainB:app-service'
+include ':msa:domainB:boot'

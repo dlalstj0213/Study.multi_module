@@ -8,6 +8,23 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/msa" />
+            <option value="$PROJECT_DIR$/msa/domainA" />
+            <option value="$PROJECT_DIR$/msa/domainA/adapter-in-web" />
+            <option value="$PROJECT_DIR$/msa/domainA/adapter-out-persistence" />
+            <option value="$PROJECT_DIR$/msa/domainA/app-domain" />
+            <option value="$PROJECT_DIR$/msa/domainA/app-port-in" />
+            <option value="$PROJECT_DIR$/msa/domainA/app-port-out" />
+            <option value="$PROJECT_DIR$/msa/domainA/app-service" />
+            <option value="$PROJECT_DIR$/msa/domainA/boot" />
+            <option value="$PROJECT_DIR$/msa/domainB" />
+            <option value="$PROJECT_DIR$/msa/domainB/adapter-in-web" />
+            <option value="$PROJECT_DIR$/msa/domainB/adapter-out-persistence" />
+            <option value="$PROJECT_DIR$/msa/domainB/app-domain" />
+            <option value="$PROJECT_DIR$/msa/domainB/app-port-in" />
+            <option value="$PROJECT_DIR$/msa/domainB/app-port-out" />
+            <option value="$PROJECT_DIR$/msa/domainB/app-service" />
+            <option value="$PROJECT_DIR$/msa/domainB/boot" />
           </set>
         </option>
       </GradleProjectSettings>

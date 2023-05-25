@@ -1,0 +1,132 @@
+// build.gradle
+
+final String MSA = 'msa'
+final String CLOUD = 'msa'
+final String LIBRARY = 'msa'
+final String SRC_MAIN_DIR = '/src/main'
+final String SRC_TEST_DIR = '/src/test'
+final String GROUP_PACKAGE = '/com/example'
+
+final String[] HEXAGONAL_LAYER = [
+        '/adapter-in-web',
+        '/adapter-out-persistence',
+        '/app-domain',
+        '/app-port-in',
+        '/app-port-out',
+        '/app-service',
+        '/boot'
+]
+
+def resolveOption(String property, String desc) {
+    if( project.hasProperty(property) ) {
+        return project.property(property)
+    } else {
+        throw new GradleException(
+                """
+===============================[ERROR]===============================
+        option [${property}]이 gradle task 명령어에 포함되어있지 않습니다.
+        아래 option이 포함된 명령어를 다시 실행해주세요.
+        \$ gradlew -q createModule -P${property}=${desc}
+=====================================================================
+        """
+        )
+    }
+}
+
+tasks.register("createMsa") {
+    description 'Create a new module directory structure and build script'
+    group 'module-task'
+
+    def moduleName = resolveOption("moduleName", "모듈명")
+    def moduleDir = file("$MSA/$moduleName")
+//    def srcDir = moduleDir.path + '/src/main/java'
+//    def buildScript = moduleDir.path + '/test-build.gradle'
+
+    inputs.property 'moduleName', moduleName
+    outputs.dir moduleDir
+
+    doFirst {
+        moduleDir.mkdirs()
+
+        for (String layer : HEXAGONAL_LAYER) {
+            file("$moduleDir.path$layer$SRC_MAIN_DIR/java$GROUP_PACKAGE").mkdirs()
+            file("$moduleDir.path$layer$SRC_MAIN_DIR/resources").mkdirs()
+            file("$moduleDir.path$layer$SRC_TEST_DIR/java$GROUP_PACKAGE").mkdirs()
+            file("$moduleDir.path$layer$SRC_TEST_DIR/resources").mkdirs()
+
+            file("$moduleDir.path$layer/.gitignore") << getGitignoreText()
+            file("$moduleDir.path$layer/build.gradle") << getBuildGradleText()
+        }
+
+        file("settings.gradle") << getIncludingModulesText(moduleName)
+    }
+
+    doLast {
+        println "Module '$moduleName' created successfully. please reload gradle project"
+    }
+}
+
+static def getBuildGradleText() {
+    return """
+dependencies {}
+"""
+}
+
+static def getGitignoreText() {
+    return"""\
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+"""
+}
+
+static def getIncludingModulesText(moduleName) {
+    return """\n
+// Module : $moduleName
+include ':msa:$moduleName:adapter-in-web'
+include ':msa:$moduleName:adapter-out-persistence'
+include ':msa:$moduleName:app-domain'
+include ':msa:$moduleName:app-port-in'
+include ':msa:$moduleName:app-port-out'
+include ':msa:$moduleName:app-service'
+include ':msa:$moduleName:boot'"""
+}
