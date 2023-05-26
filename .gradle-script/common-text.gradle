@@ -1,0 +1,96 @@
+import org.codehaus.groovy.runtime.MethodClosure
+
+static String getIncludeListText(moduleName) {
+    return """\n
+// Module : $moduleName
+include ':msa:$moduleName:adapter-in-web'
+include ':msa:$moduleName:adapter-out-persistence'
+include ':msa:$moduleName:app-domain'
+include ':msa:$moduleName:app-port-in'
+include ':msa:$moduleName:app-port-out'
+include ':msa:$moduleName:app-service'
+include ':msa:$moduleName:boot'"""
+}
+
+static String getBuildGradleText() {
+    return """\
+plugins {
+    id 'default.java-conventions'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
+"""
+}
+
+static String getGitignoreText() {
+    return"""\
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+"""
+}
+
+static String getApplicationClassText(String className) {
+    return """\
+package com.example.pj;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ${className}Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(${className}Application.class, args);
+    }
+}
+"""
+}
+
+ext {
+    getIncludeListText = this.&getIncludeListText as MethodClosure
+    getBuildGradleText = this.&getBuildGradleText as MethodClosure
+    getGitignoreText = this.&getGitignoreText as MethodClosure
+    getApplicationClassText = this.&getApplicationClassText as MethodClosure
+}

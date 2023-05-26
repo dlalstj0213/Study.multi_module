@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/msa" />
             <option value="$PROJECT_DIR$/msa/domainA" />
             <option value="$PROJECT_DIR$/msa/domainA/adapter-in-web" />
@@ -25,6 +38,14 @@
             <option value="$PROJECT_DIR$/msa/domainB/app-port-out" />
             <option value="$PROJECT_DIR$/msa/domainB/app-service" />
             <option value="$PROJECT_DIR$/msa/domainB/boot" />
+            <option value="$PROJECT_DIR$/msa/online-store" />
+            <option value="$PROJECT_DIR$/msa/online-store/adapter-in-web" />
+            <option value="$PROJECT_DIR$/msa/online-store/adapter-out-persistence" />
+            <option value="$PROJECT_DIR$/msa/online-store/app-domain" />
+            <option value="$PROJECT_DIR$/msa/online-store/app-port-in" />
+            <option value="$PROJECT_DIR$/msa/online-store/app-port-out" />
+            <option value="$PROJECT_DIR$/msa/online-store/app-service" />
+            <option value="$PROJECT_DIR$/msa/online-store/boot" />
           </set>
         </option>
       </GradleProjectSettings>

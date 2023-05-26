@@ -15,3 +15,12 @@ include ':msa:domainB:app-port-in'
 include ':msa:domainB:app-port-out'
 include ':msa:domainB:app-service'
 include ':msa:domainB:boot'
+
+// Module : online-store
+include ':msa:online-store:adapter-in-web'
+include ':msa:online-store:adapter-out-persistence'
+include ':msa:online-store:app-domain'
+include ':msa:online-store:app-port-in'
+include ':msa:online-store:app-port-out'
+include ':msa:online-store:app-service'
+include ':msa:online-store:boot'

@@ -1,15 +1,6 @@
-apply {
-    from '.gradle-script/init.gradle'
-}
+import org.codehaus.groovy.runtime.MethodClosure
 
-tasks.register("camel") {task ->
-    println toCamelCase("some_field-name")
-    println()
-    println toCamelCase("hello-world", true)
-    println toSnakeCase("CamelCaseClass")
-}
-
-static String toCamelCase( String text, boolean capitalized = false ) {
+static String toCamelCase(String text, boolean capitalized = false ) {
     String replaced = text.replaceAll( "(_|-)([A-Za-z0-9])", { Object[] it -> Character.toUpperCase(it[2] as char) } )
     if ( capitalized ) {
         char[] chars = replaced.chars
@@ -25,4 +16,10 @@ static String toSnakeCase( String text ) {
 
 static String dashSeparated(String s) {
     return s.replaceAll(/\B[A-Z]/) { '-' + it }.toLowerCase()
+}
+
+ext {
+    toCamelCase = this.&toCamelCase as MethodClosure
+    toSnakeCase = this.&toSnakeCase as MethodClosure
+    dashSeparated = this.&dashSeparated as MethodClosure
 }
