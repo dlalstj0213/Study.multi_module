@@ -1,5 +1,4 @@
-// build.gradle
-
+final String TASK_GROUP = 'module setup'
 final String MSA = 'msa'
 final String CLOUD = 'msa'
 final String LIBRARY = 'msa'
@@ -33,9 +32,9 @@ def resolveOption(String property, String desc) {
     }
 }
 
-tasks.register("createMsa") {
-    description 'Create a new module directory structure and build script'
-    group 'module-task'
+tasks.register("init-msa") {
+    description 'Setup a new module directory structure and build script'
+    group TASK_GROUP
 
     def moduleName = resolveOption("moduleName", "모듈명")
     def moduleDir = file("$MSA/$moduleName")
@@ -58,16 +57,53 @@ tasks.register("createMsa") {
             file("$moduleDir.path$layer/build.gradle") << getBuildGradleText()
         }
 
-        file("settings.gradle") << getIncludingModulesText(moduleName)
+        file("settings.gradle") << getIncludeListText(moduleName)
     }
 
     doLast {
         println "Module '$moduleName' created successfully. please reload gradle project"
     }
+
+    finalizedBy {
+    }
+
+
+}
+
+
+//tasks.every { task ->
+//    if ( name != 'initMsa') {
+//        task.dependsOn initMsa
+////        task.dependsOn initMsa
+//    }
+//}
+
+//tasks.register('reloadProject', Exec) {
+//    commandLine 'gradle', 'prepareKotlinBuildScriptModel'
+//    workingDir project.rootDir
+//    println('RUN reloadProject')
+//}
+
+//initMsa.mustRunAfter(reloadProject)
+
+//reloadProject.mustRunAfter(initMsa)
+
+//initMsa.finalizedBy(reloadProject)
+
+static def getIncludeListText(moduleName) {
+    return """\n
+// Module : $moduleName
+include ':msa:$moduleName:adapter-in-web'
+include ':msa:$moduleName:adapter-out-persistence'
+include ':msa:$moduleName:app-domain'
+include ':msa:$moduleName:app-port-in'
+include ':msa:$moduleName:app-port-out'
+include ':msa:$moduleName:app-service'
+include ':msa:$moduleName:boot'"""
 }
 
 static def getBuildGradleText() {
-    return """
+    return """\
 dependencies {}
 """
 }
@@ -117,16 +153,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 """
-}
-
-static def getIncludingModulesText(moduleName) {
-    return """\n
-// Module : $moduleName
-include ':msa:$moduleName:adapter-in-web'
-include ':msa:$moduleName:adapter-out-persistence'
-include ':msa:$moduleName:app-domain'
-include ':msa:$moduleName:app-port-in'
-include ':msa:$moduleName:app-port-out'
-include ':msa:$moduleName:app-service'
-include ':msa:$moduleName:boot'"""
 }
