@@ -1,0 +1,10 @@
+plugins {
+    id 'online-store.java-conventions'
+}
+
+dependencies {
+    implementation project(":msa:online-store:app-port-in")
+    implementation project(":msa:online-store:app-port-out")
+    implementation project(":msa:online-store:app-domain")
+    implementation 'org.springframework.boot:spring-boot'
+}

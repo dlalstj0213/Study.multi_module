@@ -1,0 +1,7 @@
+plugins {
+    id 'online-store.java-conventions'
+}
+
+dependencies {
+    implementation project(':msa:online-store:app-domain')
+}
