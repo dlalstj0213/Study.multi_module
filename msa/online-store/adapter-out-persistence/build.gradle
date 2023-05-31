@@ -1,5 +1,11 @@
 plugins {
-    id 'default.java-conventions'
+    id 'online-store.java-conventions'
 }
 
-dependencies {}
+dependencies {
+    implementation project(':msa:online-store:app-port-out')
+    implementation project(':msa:online-store:app-domain')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
+}

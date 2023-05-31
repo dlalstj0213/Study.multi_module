@@ -2,15 +2,18 @@ package com.example.pj.online_store;
 
 import lombok.Getter;
 
+import java.math.BigInteger;
 import java.util.List;
 
-public abstract class Goods {
+public class Goods {
 
-    private GoodsId id;
+    private final GoodsId id;
 
-    private String goodsName;
+    private final String modelId;
 
-    private Money price;
+    private final String goodsName;
+
+    private final Money price;
 
     private String quantity;
 
@@ -18,10 +21,43 @@ public abstract class Goods {
 
     private String RegisteredDate;
 
-    abstract boolean isNew();
+//    abstract boolean isNew();
 
-    abstract GoodsState getState();
+//    abstract GoodsState getState();
 
+    private Goods(
+            GoodsId id,
+            String modelId,
+            String goodsName,
+            Money price
+    ) {
+        this.id = id;
+        this.modelId = modelId;
+        this.goodsName = goodsName;
+        this.price = price;
+    }
 
-    public record GoodsId(String id) {}
+    /**
+     *
+     * @param id
+     * @param modelId
+     * @param goodsName
+     * @param price
+     * @return
+     */
+    public static Goods withId(
+            Long id,
+            String modelId,
+            String goodsName,
+            BigInteger price
+    ) {
+        return new Goods(
+                new GoodsId(id),
+                modelId,
+                goodsName,
+                new Money(price)
+        );
+    }
+
+    public record GoodsId(Long id) {}
 }

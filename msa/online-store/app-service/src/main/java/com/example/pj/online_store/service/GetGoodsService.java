@@ -1,9 +1,9 @@
-package com.example.pj.online_shop.service;
+package com.example.pj.online_store.service;
 
 import com.example.pj.online_shop.command.GetGoodsListCommand;
-import com.example.pj.online_shop.port.out.ReadGoodsDetail;
-import com.example.pj.online_shop.port.out.ReadGoodsList;
-import com.example.pj.online_shop.port.out.command.ReadGoodsListCommand;
+import com.example.pj.online_store.port.out.ReadGoodsDetail;
+import com.example.pj.online_store.port.out.ReadGoodsList;
+import com.example.pj.online_store.port.out.command.ReadGoodsListCommand;
 import com.example.pj.online_shop.query.GetGoodsDetailQuery;
 import com.example.pj.online_shop.query.GetGoodsListQuery;
 import com.example.pj.online_store.Goods;

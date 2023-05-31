@@ -1,9 +1,10 @@
-package com.example.pj.online_shop.port.out.command;
+package com.example.pj.online_store.port.out.command;
 
 import com.example.pj.online_store.Goods;
 
 public record ReadGoodsListCommand(
-        Goods.GoodsId goodsId,
+        int pageNo,
+        int pageSize,
         String orderId,
         String sortId
 ) {

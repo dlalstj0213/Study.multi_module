@@ -1,4 +1,4 @@
-package com.example.pj.online_shop.port.out;
+package com.example.pj.online_store.port.out;
 
 import com.example.pj.online_store.Goods;
 
