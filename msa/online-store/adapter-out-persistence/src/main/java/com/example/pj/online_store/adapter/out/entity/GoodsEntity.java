@@ -2,15 +2,19 @@ package com.example.pj.online_store.adapter.out.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
-@Data
+
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity
+@Entity(name = "goods")
 @Table(name = "GOODS")
 public class GoodsEntity {
 
@@ -25,4 +29,17 @@ public class GoodsEntity {
     private String name;
 
     private BigInteger price;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        GoodsEntity that = (GoodsEntity) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

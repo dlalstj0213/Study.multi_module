@@ -1,28 +1,3 @@
 apply {
     from '.gradle-script/init.gradle'
 }
-
-tasks.register("camel") {task ->
-    println toCamelCase("some_field-name")
-    println()
-    println toCamelCase("hello-world", true)
-    println toSnakeCase("CamelCaseClass")
-}
-
-static String toCamelCase( String text, boolean capitalized = false ) {
-    String replaced = text.replaceAll( "(_|-)([A-Za-z0-9])", { Object[] it -> Character.toUpperCase(it[2] as char) } )
-    if ( capitalized ) {
-        char[] chars = replaced.chars
-        chars[0] = Character.toUpperCase(chars[0])
-        return new String(chars)
-    }
-    return replaced
-}
-
-static String toSnakeCase( String text ) {
-    text.replaceAll( /([A-Z])/, /_$1/ ).toLowerCase().replaceAll( /^_/, '' )
-}
-
-static String dashSeparated(String s) {
-    return s.replaceAll(/\B[A-Z]/) { '-' + it }.toLowerCase()
-}

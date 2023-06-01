@@ -14,7 +14,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class GetGoodsService implements GetGoodsDetailQuery, GetGoodsListQuery {
+public class GetGoodsService implements GetGoodsDetailQuery,
+                                        GetGoodsListQuery {
 
     private final ReadGoodsDetail readGoodsDetail;
     private final ReadGoodsList readGoodsList;
@@ -26,9 +27,9 @@ public class GetGoodsService implements GetGoodsDetailQuery, GetGoodsListQuery {
 
     @Override
     public List<Goods> getGoodsList(GetGoodsListCommand getGoodsListCommand) {
-        return readGoodsList.readList(new ReadGoodsListCommand(
-                getGoodsListCommand.goodsId(),
-                getGoodsListCommand.orderId(),
-                getGoodsListCommand.sortBy()));
+        return readGoodsList.readList(new ReadGoodsListCommand(getGoodsListCommand.pageNo(),
+                                                               getGoodsListCommand.pageSize(),
+                                                               getGoodsListCommand.orderBy(),
+                                                               getGoodsListCommand.sortDirection()));
     }
 }

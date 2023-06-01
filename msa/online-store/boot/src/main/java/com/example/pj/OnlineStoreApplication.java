@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DomainAApplication {
+public class OnlineStoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DomainAApplication.class, args);
+        SpringApplication.run(OnlineStoreApplication.class, args);
     }
 }

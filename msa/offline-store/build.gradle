@@ -1,0 +1,6 @@
+plugins {
+    id 'online-store.java-conventions'
+}
+dependencies {
+
+}

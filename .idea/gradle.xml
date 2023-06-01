@@ -21,6 +21,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/data" />
             <option value="$PROJECT_DIR$/msa" />
             <option value="$PROJECT_DIR$/msa/domainA" />
             <option value="$PROJECT_DIR$/msa/domainA/adapter-in-web" />
@@ -38,6 +40,7 @@
             <option value="$PROJECT_DIR$/msa/domainB/app-port-out" />
             <option value="$PROJECT_DIR$/msa/domainB/app-service" />
             <option value="$PROJECT_DIR$/msa/domainB/boot" />
+            <option value="$PROJECT_DIR$/msa/offline-store" />
             <option value="$PROJECT_DIR$/msa/online-store" />
             <option value="$PROJECT_DIR$/msa/online-store/adapter-in-web" />
             <option value="$PROJECT_DIR$/msa/online-store/adapter-out-persistence" />
