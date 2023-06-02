@@ -1,9 +1,10 @@
 plugins {
-    id 'online-store.java-conventions'
+    id 'core.java-conventions'
 }
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/snapshot' }
     maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
 }
 
@@ -18,14 +19,9 @@ dependencyManagement {
 }
 
 dependencies {
-    implementation project(':msa:online-store:adapter-in-web')
-    implementation project(':msa:online-store:adapter-out-persistence')
-    implementation project(':msa:online-store:app-service')
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
 
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter'
-
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.session:spring-session-data-redis'
 }

@@ -23,6 +23,9 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/data" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/auth" />
+            <option value="$PROJECT_DIR$/core/cloud" />
             <option value="$PROJECT_DIR$/msa" />
             <option value="$PROJECT_DIR$/msa/domainA" />
             <option value="$PROJECT_DIR$/msa/domainA/adapter-in-web" />
@@ -40,6 +43,14 @@
             <option value="$PROJECT_DIR$/msa/domainB/app-port-out" />
             <option value="$PROJECT_DIR$/msa/domainB/app-service" />
             <option value="$PROJECT_DIR$/msa/domainB/boot" />
+            <option value="$PROJECT_DIR$/msa/mvc" />
+            <option value="$PROJECT_DIR$/msa/mvc/adapter-in-web" />
+            <option value="$PROJECT_DIR$/msa/mvc/adapter-out-persistence" />
+            <option value="$PROJECT_DIR$/msa/mvc/app-domain" />
+            <option value="$PROJECT_DIR$/msa/mvc/app-port-in" />
+            <option value="$PROJECT_DIR$/msa/mvc/app-port-out" />
+            <option value="$PROJECT_DIR$/msa/mvc/app-service" />
+            <option value="$PROJECT_DIR$/msa/mvc/boot" />
             <option value="$PROJECT_DIR$/msa/offline-store" />
             <option value="$PROJECT_DIR$/msa/online-store" />
             <option value="$PROJECT_DIR$/msa/online-store/adapter-in-web" />

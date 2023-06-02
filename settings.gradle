@@ -24,10 +24,10 @@ include ':msa:online-store:app-port-in'
 include ':msa:online-store:app-port-out'
 include ':msa:online-store:app-service'
 include ':msa:online-store:boot'
-include ':common:data'
-include 'msa:offline-store'
-findProject(':msa:offline-store')?.name = 'offline-store'
 
+include ':common:data'
+
+include ':msa:offline-store'
 
 
 // Module : mvc
@@ -38,3 +38,6 @@ include ':msa:mvc:app-port-in'
 include ':msa:mvc:app-port-out'
 include ':msa:mvc:app-service'
 include ':msa:mvc:boot'
+
+include ':core:cloud'
+include ':core:auth'

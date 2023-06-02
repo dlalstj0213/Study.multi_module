@@ -7,3 +7,15 @@ GET http://localhost:8085/online
 Accept: application/json
 
 ###
+
+GET http://localhost:8000/offline
+Content-Type: application/json
+
+{}
+
+###
+
+GET http://localhost:8000/offline
+Accept: application/json
+
+###

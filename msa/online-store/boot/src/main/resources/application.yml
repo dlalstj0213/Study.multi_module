@@ -1,6 +1,17 @@
 server:
   port: 8085
 spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      client-type: lettuce
+  cache:
+    type: redis
+  session:
+    store-type: redis # Session store type.
+  application:
+    name: online-store
   # H2 Setting Info (H2 Console에 접속하기 위한 설정정보 입력)
   h2:
     console:
@@ -25,51 +36,34 @@ logging:
         type:
           descriptor:
             sql: trace
-#  jpa:
-#    defer-datasource-initialization: false
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        show_sql: true
-#    generate-ddl: false
-#    hibernate:
-#      ddl-auto: create-drop
-#  sql:
-#    init:
-#      mode: never
-#
-### log4jdbc, Mybatis Console Log
-#logging:
-#  level:
-#    com:
-#      zaxxer:
-#        hikari: TRACE
-#    jdbc:
-#      audit: OFF
-#      resultset: OFF
-#      resultsettable: TRACE   # SQL 결과 데이터 Table을 로그로 남긴다.
-#      sqlonly: OFF            # SQL만 로그로 남긴다.
-#      sqltiming: TRACE        # SQL과 소요시간을 표기한다.
-#      connection: OFF         # 커넥션 확인가능
-#    javax:
-#      sql:
-#        DataSource: OFF
-#    org:
-#      org:
-#        springframework:
-#          web: OFF
-#      hibernate:
-#        SQL: OFF
-#        type:
-#          descriptor:
-#            sql: TRACE
-#              BasicBinder: TRACE
-#  jpa:
-#    show-sql: true
-#logging:
-#  level:
-#    org:
-#      hibernate:
-#        sql: DEBUG
-#        format_seq: DEBUG
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      # 유레카 클라이언트가 서비스를 등록할 서버 주소를 지정하기 위해 사용함
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+    region: ko-KR
+    disable-delta: true
+  instance:
+    # 유레카에 등록되는 ID 값
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+    # 유레카 등록 시 host name 대신 ip 주소 사용
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - loggers
+          - mappings
+          - metrics
+          - shutdown
+          - prometheus
+  endpoint:
+    shutdown:
+      enabled: true

@@ -1,0 +1,37 @@
+server:
+  port: ${port:0}
+
+spring:
+  application:
+    name: offline-store
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      # 유레카 클라이언트가 서비스를 등록할 서버 주소를 지정하기 위해 사용함
+      #      default-zone: ${EUREKA_URL:http://localhost:8761/eureka/}
+      default-zone: http://localhost:8761/eureka/
+    region: ko-KR
+    disable-delta: true
+    registry-fetch-interval-seconds: 10
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}:${random.value}}
+    prefer-ip-address: true
+#    lease-renewal-interval-in-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - loggers
+          - mappings
+          - metrics
+          - shutdown
+          - prometheus
+  endpoint:
+    shutdown:
+      enabled: true
