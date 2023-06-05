@@ -26,6 +26,8 @@ include ':msa:online-store:app-service'
 include ':msa:online-store:boot'
 
 include ':common:data'
+include ':common:session'
+include 'common:config'
 
 include ':msa:offline-store'
 
@@ -41,3 +43,5 @@ include ':msa:mvc:boot'
 
 include ':core:cloud'
 include ':core:auth'
+include 'sampleA'
+include 'sample-spring-boot-starter'

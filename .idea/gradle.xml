@@ -22,7 +22,9 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/common/config" />
             <option value="$PROJECT_DIR$/common/data" />
+            <option value="$PROJECT_DIR$/common/session" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/auth" />
             <option value="$PROJECT_DIR$/core/cloud" />
@@ -60,6 +62,8 @@
             <option value="$PROJECT_DIR$/msa/online-store/app-port-out" />
             <option value="$PROJECT_DIR$/msa/online-store/app-service" />
             <option value="$PROJECT_DIR$/msa/online-store/boot" />
+            <option value="$PROJECT_DIR$/sample-spring-boot-starter" />
+            <option value="$PROJECT_DIR$/sampleA" />
           </set>
         </option>
       </GradleProjectSettings>

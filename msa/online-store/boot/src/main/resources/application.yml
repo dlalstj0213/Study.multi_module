@@ -1,15 +1,15 @@
 server:
   port: 8085
 spring:
-  data:
-    redis:
-      host: localhost
-      port: 6379
-      client-type: lettuce
-  cache:
-    type: redis
-  session:
-    store-type: redis # Session store type.
+  #  data:
+  #    redis:
+  #      host: localhost
+  #      port: 6379
+  #      client-type: lettuce
+  #  cache:
+  #    type: redis
+  #  session:
+  #    store-type: redis # Session store type.
   application:
     name: online-store
   # H2 Setting Info (H2 Console에 접속하기 위한 설정정보 입력)

@@ -1,0 +1,70 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.autoconfigure'
+            artifactId = 'sample-spring-boot-starter'
+            version = "0.1-SNAPSHOT"
+            from components.java
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+
+            pom {
+                name = 'My Library'
+                description = 'A description of my library'
+            }
+        }
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+bootJar.enabled = false
+jar.enabled = true
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = 'com.autoconfigure' as Publication
+//            artifactId = 'sample-spring-boot-starter' as Publication
+//            version = '0.0.1-SNAPSHOT' as Publication
+//
+//            from components.java
+//        }
+//    }
+//}

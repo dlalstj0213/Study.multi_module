@@ -1,0 +1,10 @@
+plugins {
+    id 'common-base.java-conventions'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation project(":common:session")
+}

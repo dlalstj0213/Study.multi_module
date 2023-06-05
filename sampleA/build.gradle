@@ -1,0 +1,16 @@
+plugins {
+    id 'sample-a.java-conventions'
+}
+
+bootJar.enabled = true
+
+dependencies {
+//    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+
+//    implementation files('../libs/sample-spring-boot-starter-plain.jar')
+
+    implementation project(":sample-spring-boot-starter")
+
+//    implementation 'com.autoconfigure:sample-spring-boot-starter:0.1-SNAPSHOT'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}

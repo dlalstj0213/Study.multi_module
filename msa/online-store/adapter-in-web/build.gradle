@@ -5,8 +5,10 @@ plugins {
 dependencies {
     implementation project(":msa:online-store:app-port-in")
     implementation project(":msa:online-store:app-domain")
+    implementation project(":common:session")
+    implementation project(":sample-spring-boot-starter")
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.session:spring-session-data-redis'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//    implementation 'org.springframework.session:spring-session-data-redis'
 }
