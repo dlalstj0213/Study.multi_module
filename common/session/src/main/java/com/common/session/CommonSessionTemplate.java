@@ -12,9 +12,16 @@ public interface CommonSessionTemplate {
 
     HttpSession createSession();
 
+    void removeSession();
+
+    void removeSession(String sessionId);
+
+    boolean hasSession(String sessionId);
+
     UserSession createSessionBy(UserSession userSession);
 
     UserSession getUserSession() throws CommonSessionException;
 
     void setUserSession(UserSession userSession);
+
 }

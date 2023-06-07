@@ -2,14 +2,17 @@ package com.common.session;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "spring.data.redis")
+@ConfigurationProperties(prefix = "common.session.redis")
+//@PropertySource(value = "classpath:application.yml", factory = YamlPropertySourceFactory.class)
 public class CommonSessionProperties {
 
     private String host;
 
-    private String port;
+    private int port;
 
     private String password;
+
+    private long expiredTime;
 
     public String getHost() {
         return host;
@@ -19,11 +22,11 @@ public class CommonSessionProperties {
         this.host = host;
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 
@@ -33,5 +36,13 @@ public class CommonSessionProperties {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public long getExpiredTime() {
+        return expiredTime;
+    }
+
+    public void setExpiredTime(long expiredTime) {
+        this.expiredTime = expiredTime;
     }
 }

@@ -13,12 +13,26 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      default-filters:
+        - name: GlobalFilter #Global Filter로 지정된 java 파일 이름
+          args:
+            baseMessage: Spring Cloud Gateway Global Filter
+            preLogger: true
+            postLogger: true
       routes:
         - id: online-store
           uri: lb://ONLINE-STORE
           predicates:
             - Path=/online/**
+          filters:
+            - AuthorizationSessionFilter
         - id: offline-store
           uri: lb://OFFLINE-STORE
           predicates:
             - Path=/offline/**
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

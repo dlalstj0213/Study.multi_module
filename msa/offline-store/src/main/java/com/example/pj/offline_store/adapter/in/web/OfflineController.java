@@ -1,5 +1,8 @@
 package com.example.pj.offline_store.adapter.in.web;
 
+import com.common.session.CommonSessionTemplate;
+import com.common.session.exception.CommonSessionException;
+import com.common.session.model.UserSession;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +18,9 @@ import java.util.HashMap;
 @RequiredArgsConstructor
 public class OfflineController {
 
-    private Environment environment;
+    private final Environment environment;
+
+    private final CommonSessionTemplate commonSessionTemplate;
 
     @GetMapping("")
     ResponseEntity<String> getOffline(HttpServletRequest request) {
@@ -31,9 +36,8 @@ public class OfflineController {
     }
 
     @GetMapping("/check")
-    String checkAuth(HttpSession session) {
-        Object obj = session.getAttribute("username");
-        if (obj != null) return (String) obj;
-        return "No Value";
+    String checkAuth() throws CommonSessionException {
+        UserSession user = commonSessionTemplate.getUserSession();
+        return user.toString();
     }
 }

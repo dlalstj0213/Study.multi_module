@@ -27,7 +27,7 @@ include ':msa:online-store:boot'
 
 include ':common:data'
 include ':common:session'
-include 'common:config'
+include ':common:config'
 
 include ':msa:offline-store'
 
