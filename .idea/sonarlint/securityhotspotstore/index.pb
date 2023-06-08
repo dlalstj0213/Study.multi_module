@@ -1,8 +1,6 @@
 
 •
 emsa/online-store/adapter-in-web/src/main/java/com/example/pj/online_store/web/OnlineStoreRestApi.java,4/4/44633c08f062d199405609d64f670bd7b6639258
-c
-3buildSrc/src/main/java/core.java-conventions.gradle,7/6/76ccd1dd809ff7011b0cf5b4b6ec3e9a00bd6a70
 h
 8sampleA/src/main/java/com/a/sample/SampleController.java,5/c/5c83e45395dedf994d4202245415123edfa22057
 U
@@ -73,9 +71,3 @@ P
  msa/online-store/boot/.gitignore,6/9/6927db5b8f0258322a27cb72c5d53cf01e85588a
 –
 fmsa/online-store/adapter-in-web/src/main/java/com/example/pj/online_store/web/SearchGoodsResponse.java,5/c/5c2859a4c27fb1e5197e0ab44fa213cef1ad5acb
-~
-Ncommon/session/src/main/java/com/common/session/YamlPropertySourceFactory.java,4/0/401cc238357b89ed9ed811dd7aa9cf3d96332102
-K
-common/session/build.gradle,a/f/affe064733aad2f5b6a28846660b12db3f8fcc58
-n
->core/cloud/src/main/java/auth/core/cloud/CloudApplication.java,7/4/74e258a3e69666bf5c2fa3a2e019658f7f7d0289

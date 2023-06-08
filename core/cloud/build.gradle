@@ -10,6 +10,8 @@ repositories {
 
 ext {
     set('springCloudVersion', "2022.0.3")
+    set('isMacOS', System.getProperty("os.name").startsWith("Mac OS X"))
+    set('architecture', System.getProperty("os.arch").toLowerCase())
 }
 
 dependencyManagement {
@@ -20,8 +22,21 @@ dependencyManagement {
 
 dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
-    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.session:spring-session-data-redis'
+
+//    implementation 'org.springframework.session:spring-session-core'
+//    implementation 'org.springframework.boot:'
+
+    // If there is unable load netty error, try implementation below. (Only MacOS M1 and SPRING-BOOT-v3.0.X)
+    if (isMacOS && architecture == "aarch64") {
+        //    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.92.Final:osx-aarch_64'
+        // or
+        //    developmentOnly("io.netty:netty-resolver-dns-native-macos:4.1.92.Final:osx-aarch_64")
+    }
 }

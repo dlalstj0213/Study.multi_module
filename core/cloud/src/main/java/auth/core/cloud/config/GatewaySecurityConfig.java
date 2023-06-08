@@ -1,15 +1,22 @@
 package auth.core.cloud.config;
 
+import auth.core.cloud.filter.SessionAuthenticationFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.cors.reactive.CorsConfigurationSource;
@@ -22,8 +29,10 @@ import java.util.Objects;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+@Slf4j
 @Configuration
 @EnableWebFluxSecurity
+@RequiredArgsConstructor
 public class GatewaySecurityConfig {
 
     @Bean
@@ -34,9 +43,7 @@ public class GatewaySecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange(exchanges -> exchanges.anyExchange().permitAll())
-
-            .cors(cors -> {
+        http.cors(cors -> {
                 CorsConfigurationSource source = exchange -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowCredentials(true); // 쿠키를 받을건지
@@ -53,7 +60,23 @@ public class GatewaySecurityConfig {
 
             .headers(ServerHttpSecurity.HeaderSpec::disable)
 
-            .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
+            .formLogin(ServerHttpSecurity.FormLoginSpec::disable).securityContextRepository(
+                    NoOpServerSecurityContextRepository.getInstance())
+
+//            .authorizeExchange(exchange -> exchange.pathMatchers(HttpMethod.OPTIONS)
+//                                                   .permitAll()
+//                                                   .pathMatchers("/auth/**")
+//                                                   .permitAll()
+//                                                   .pathMatchers("/online/**")
+//                                                   .permitAll()
+//                                                   .anyExchange()
+//                                                   .authenticated())
+//
+//            .addFilterAt(new SessionAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
+            .authorizeExchange(exchange -> exchange.pathMatchers(HttpMethod.OPTIONS)
+                                                   .permitAll()
+                                                   .anyExchange()
+                                                   .permitAll())
 
             .logout(ServerHttpSecurity.LogoutSpec::disable);
 

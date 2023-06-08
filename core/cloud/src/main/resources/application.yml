@@ -8,9 +8,20 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+sensitiveHeaders: Authorization, Set-Cookie
+
 spring:
   application:
     name: gateway-service
+  data:
+    redis:
+      port: 6379
+      host: localhost
+      client-type: lettuce
+  session:
+    store-type: redis
+    redis:
+      configure-action: none
   cloud:
     gateway:
       default-filters:
@@ -25,12 +36,12 @@ spring:
           predicates:
             - Path=/online/**
           filters:
-            - AuthorizationSessionFilter
         - id: offline-store
           uri: lb://OFFLINE-STORE
           predicates:
             - Path=/offline/**
-
+          filters:
+            - GatewayAuthorizationSessionFilter
 logging:
   level:
     org:
